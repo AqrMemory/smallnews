@@ -3,6 +3,7 @@ package com.znstart.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.znstart.mapper.TypeMapper;
 import com.znstart.pojo.Type;
+import com.znstart.pojo.vo.PortalVo;
 import com.znstart.service.TypeService;
 import com.znstart.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,10 @@ public class TypeServiceImpl extends ServiceImpl<TypeMapper, Type>
 
         return Result.ok(types);
     }
+
+
+
+
 }
 
 

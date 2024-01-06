@@ -2,6 +2,7 @@ package com.znstart.service;
 
 import com.znstart.pojo.Type;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.znstart.pojo.vo.PortalVo;
 import com.znstart.util.Result;
 
 /**
@@ -14,5 +15,7 @@ public interface TypeService extends IService<Type> {
     * 查询所有类别数据
     * */
     Result findAllTypes();
+
+
 
 }

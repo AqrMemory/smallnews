@@ -2,7 +2,9 @@ package com.znstart.controller;
 
 import com.znstart.pojo.User;
 import com.znstart.service.UserService;
+import com.znstart.util.JwtHelper;
 import com.znstart.util.Result;
+import com.znstart.util.ResultCodeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +17,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("user")  //设置跟路径
 @CrossOrigin  //跨域
 public class UserController {
-
+        @Autowired
+       private JwtHelper jwtHelper;
     /**
      * 登录需求
      * 地址: /user/login
@@ -72,4 +75,16 @@ public class UserController {
         return result;
 
     }
-}
+
+    @GetMapping("checkLogin")
+    public Result checkLogin(@RequestHeader String token) {
+
+        boolean expiration = jwtHelper.isExpiration(token);
+
+        if (expiration) {
+            return Result.build(null, ResultCodeEnum.NOTLOGIN);
+        }
+        return Result.ok(null);
+    }
+    }
+
